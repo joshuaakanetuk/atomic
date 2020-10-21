@@ -11,7 +11,7 @@ class Nav extends React.Component{
                 <ul className="">
                     <li><a href="/"><i className="ri-donut-chart-fill"></i></a></li>
                     <li>ATOMIC</li>
-                    <li>MENU!!!</li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                 </ul>
             </nav>
         );

@@ -33,6 +33,10 @@ ul, li {
   padding: 0;
 }
 
+small {
+  color: gray; 
+}
+
 /* GLOBAL CLASSES */
 
 .container {
@@ -112,8 +116,46 @@ nav li {
 
 #id  {
   
+
+  
 }
 
+/* DASHBOARD */
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0,0,0, 0.8);
+  position: fixed;
+}
+
+
+.plus {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  border: 1px solid #333;
+  right: 20px;
+  /* box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16); */
+}
+
+/* CELLS */
+.cell_group {
+  border: 1px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cell_profileimage {
+  background-image: url('https://ui-avatars.com/api/?background=0D8ABC&color=fff');
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+}
 
 /* TABLETS + DESKTOPS */
 
