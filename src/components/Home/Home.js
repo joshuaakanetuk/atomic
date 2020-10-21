@@ -12,7 +12,7 @@ class Home extends React.Component{
                 {/* Navigation Bar */}
                 <main id="home">
                     <section className="frontpage ineedspace">
-                    <h1>Measure your day.</h1>
+                    <h1>Measure <br/> your day.</h1>
                     <h3>Use ATOMIC in order to track things you tend to forget about or want to know more of.</h3>
                     <ul className="">
                         <li><Link className="" to="/login">Login</Link></li>
@@ -28,7 +28,7 @@ class Home extends React.Component{
 
                     </section>
                     <section className="footer ineedspace">
-                        <div>ATOMIC</div>
+                        <div><i className="ri-donut-chart-fill"></i>ATOMIC</div>
                         <div>
                             <li>Link</li>
                             <li>Link</li>
