@@ -1,40 +1,43 @@
 /* IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
-#root, .App {
+#root,
+.App {
   height: 100%;
   width: 100%;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  font-family: Roboto Mono, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Roboto Mono, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
 }
 
 h1 {
   font-size: 48px;
-
 }
 
 i {
   font-size: 30px;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   padding: 0;
 }
 
 small {
-  color: gray; 
+  color: gray;
 }
 
 /* GLOBAL CLASSES */
@@ -78,7 +81,8 @@ nav li {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color:rgba(0,0,0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 80ms linear;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -96,38 +100,104 @@ nav li {
 }
 
 .activityContainer {
-  width: 329px;
+  width: 350px;
   height: 300px;
   background-color: white;
   padding: 16px;
   color: black;
   display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-#feelings, #activities {
+#feelings,
+#activities {
+  transition: all 80ms linear;
   flex: 1 1 45%;
   padding: 5px;
-  margin: 5px;
-  
+  margin: 5px 0;
   border: 1px solid black;
+}
 
+.feeldo {
+  flex: 2 1 0;
+  flex-direction: row;
+  display: flex;
+}
+
+.active {
+  color: white;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.nextbutton {
+  margin: 5px 0;
+  height: 10%;
+  border: 1px solid black;
+}
+
+.choices {
+  flex: 1 1 auto;
+  display: flex;
+  position: relative;
+  margin: 5px 0;
+}
+
+.picker {
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 0;
+  border: 1px solid black;
+  /* margin: 5px; */
+  position: absolute;
+}
+
+.picker:-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+.pickerHeader {
+}
+
+.pickerItem {
+  flex: 1 1 50%;
+  text-align: left;
+  padding-left: 5px;
+}
+
+textarea {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 16px;
+  height: 80px;
+  resize: none;
+  overflow: hidden;
+  /* margin: 5px; */
+  /* background: #202020; */
+  /* color: hsla(0, 0%, 100%, 0.9); */
+  flex: 1 1 auto;
+  outline: none;
+  border: 1px solid black;
+  padding: 8px 8px;
+  width: 100%;
 }
 
 /* HOME PAGE */
 
 #home {
-  
 }
 
-#home h1, #home h3 {
+#home h1,
+#home h3 {
   margin-top: 0;
   text-align: center;
 }
 
 #home .frontpage {
   height: 100vh;
-  
 }
 
 #home .features li {
@@ -154,18 +224,12 @@ nav li {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
-#id  {
-  
-
-  
+#id {
 }
 
 /* DASHBOARD */
-
-
 
 .plus {
   width: 60px;
@@ -188,7 +252,7 @@ nav li {
 }
 
 .cell_profileimage {
-  background-image: url('https://ui-avatars.com/api/?background=0D8ABC&color=fff');
+  background-image: url("https://ui-avatars.com/api/?background=0D8ABC&color=fff");
   width: 16px;
   height: 16px;
   background-size: cover;
@@ -197,7 +261,7 @@ nav li {
 /* PROFILE  */
 
 #profile .avatar {
-  background-image: url('https://ui-avatars.com/api/?background=0D8ABC&color=fff');
+  background-image: url("https://ui-avatars.com/api/?background=0D8ABC&color=fff");
   width: 144px;
   height: 144px;
   background-color: #333;
@@ -207,6 +271,5 @@ nav li {
 
 /* TABLETS + DESKTOPS */
 
-@media all and (max-width: 600px) { 
-
+@media all and (max-width: 600px) {
 }
