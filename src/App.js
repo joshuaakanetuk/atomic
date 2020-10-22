@@ -7,13 +7,16 @@ import Nav from './components/Nav/Nav';
 import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardContext from './context/DashboardContext';
+import Update from './components/Dashboard/UpdateCell/Update';
 
 class App extends React.Component  {
   static contextType = DashboardContext;
   render() {
     return (
       <div className="App">
-        <div className={this.context.overlay ? "overlay" : ''}></div>
+        <div className={this.context.overlay ? "overlay" : 'overlayHidden'}>
+          <Update/>
+        </div>
         <Nav/>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
