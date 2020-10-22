@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import DashboardContext from "../../context/DashboardContext";
 import List from "./List/List.js"
+import Profile from "./Profile/Profile"
 
 class Dashboard extends React.Component {
     static contextType = DashboardContext;
@@ -27,6 +28,7 @@ class Dashboard extends React.Component {
               
               <List cells={this.context.cells}/>
           )} />
+          <Route path="/dashboard/profile" component={Profile} />
         </Switch>
       </section>
       </>

@@ -157,6 +157,17 @@ nav li {
   background-size: cover;
 }
 
+/* PROFILE  */
+
+#profile .avatar {
+  background-image: url('https://ui-avatars.com/api/?background=0D8ABC&color=fff');
+  width: 144px;
+  height: 144px;
+  background-color: #333;
+  border-radius: 50%;
+  background-size: cover;
+}
+
 /* TABLETS + DESKTOPS */
 
 @media all and (max-width: 600px) { 

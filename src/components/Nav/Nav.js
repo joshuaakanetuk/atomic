@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Nav extends React.Component{
     constructor(props) {
@@ -11,7 +12,8 @@ class Nav extends React.Component{
                 <ul className="">
                     <li><a href="/"><i className="ri-donut-chart-fill"></i></a></li>
                     <li>ATOMIC</li>
-                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><Link to="/dashboard"> Dashboard </Link></li>
+                    <li><Link to="/dashboard/profile"> Profile </Link></li>
                 </ul>
             </nav>
         );
