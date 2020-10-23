@@ -1,5 +1,6 @@
 import React from "react";
 import DashboardContext from "../../../context/DashboardContext";
+import {format} from 'date-fns'
 
 class List extends React.Component {
   static defaultProps = {
@@ -37,7 +38,7 @@ class List extends React.Component {
                 {cell.comment}
                 <br />
                 <div className="cell_profileimage"></div>
-                <small>{cell.date_created}</small>
+                <small>{format(new Date(cell.date_created), "PPpp")}</small>
               </li>
             );
           })}

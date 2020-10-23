@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CELLS from "../LIST";
+import { v4 as uuidv4 } from "uuid";
 
 // Declare variables and functions here
 // setError: () => {},
@@ -29,18 +30,38 @@ export class DashboardProvider extends Component {
 
   // Set current cell for update
   prepCell = (cell) => {
-    this.setState({
-      cell
-    })
-
+    this.setState(
+      {
+        cell,
+      },
+      () => {
+        this.toggleOverlay();
+      }
+    );
   };
 
   // Add cell to memory/database
   submitCell = () => {
     // need to find cell if updating
-    this.setState({
-      cells: [...this.state.cells, { ...this.state.cell, date_created: new Date().toISOString() }],
-    });
+    if (this.state.cell.id.length > 1) {
+      //
+      let cells = [...this.state.cells];
+      let cellId = cells.filter((cell) => cell.id === this.state.cell.id)[0];
+      let cellTemp = cells.indexOf(cellId);
+      cells[cellTemp] = this.state.cell;
+      this.setState({ cells });
+    } else {
+      this.setState({
+        cells: [
+          ...this.state.cells,
+          {
+            ...this.state.cell,
+            id: uuidv4(),
+            date_created: new Date().toISOString(),
+          },
+        ],
+      });
+    }
   };
 
   // Update the state
