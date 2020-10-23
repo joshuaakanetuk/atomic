@@ -26,9 +26,9 @@ class List extends React.Component {
           {reverseArr(this.props.cells).map((cell, i) => {
             return (
               <li
-                onClick={() => {
+                onClick={(e) => {
                   console.log("clicked")
-                  this.context.prepCell(cell);
+                  this.context.prepCell(e, cell);
                 }}
                 className="cell_group"
                 key={i}

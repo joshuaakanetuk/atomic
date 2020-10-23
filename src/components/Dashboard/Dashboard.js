@@ -18,8 +18,8 @@ class Dashboard extends React.Component {
       <>
       <section className="container">
           {/*  PLUS SIGN  */}
-          <div onClick={() => {
-            this.context.toggleOverlay();
+          <div onClick={(e) => {
+            this.context.toggleOverlay(e);
           }} 
           className="plus">+ </div>
         {/* CELLS / STATS SELECTOR */}

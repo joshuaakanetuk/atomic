@@ -14,7 +14,9 @@ class App extends React.Component  {
   render() {
     return (
       <div className="App">
-        <div className={this.context.overlay ? "overlay" : 'overlayHidden'}>
+        <div onClick={(e) => {
+            this.context.toggleOverlay(e);
+          }}  className={this.context.overlay ? "overlay" : 'overlayHidden'}>
           <Update/>
         </div>
         <Nav/>

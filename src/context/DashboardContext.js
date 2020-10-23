@@ -29,13 +29,13 @@ export class DashboardProvider extends Component {
   cleanCell = () => {};
 
   // Set current cell for update
-  prepCell = (cell) => {
+  prepCell = (e, cell) => {
     this.setState(
       {
         cell,
       },
       () => {
-        this.toggleOverlay();
+        this.toggleOverlay(e);
       }
     );
   };
@@ -69,10 +69,13 @@ export class DashboardProvider extends Component {
     this.setState(obj);
   };
 
-  toggleOverlay = () => {
-    this.setState({
-      overlay: this.state.overlay ? false : true,
-    });
+  toggleOverlay = (e) => {
+    console.log(e)
+    if(e!= undefined && e.target.className === 'overlay' || e.target.className === 'plus' || e.target.className === 'cell_group' || (e.target.className === 'nextbutton'  && this.state.STATUS + 1 === 3 )) {
+      this.setState({
+        overlay: this.state.overlay ? false : true,
+      });
+    }
   };
 
   render() {

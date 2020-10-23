@@ -11,9 +11,11 @@ class Nav extends React.Component{
             <nav className="">
                 <ul className="">
                     <li><a href="/"><i className="ri-donut-chart-fill"></i></a></li>
-                    <li>ATOMIC</li>
+                    {/* <li>ATOMIC</li> */}
                     <li><Link to="/dashboard"> Dashboard </Link></li>
                     <li><Link to="/dashboard/profile"> Profile </Link></li>
+                    <li><Link to="/dashboard/stats"> Stats </Link></li>
+
                 </ul>
             </nav>
         );

@@ -19,6 +19,7 @@ class Home extends React.Component{
                         <li><Link className="" to="/register">Register</Link></li>
                     </ul> 
                     </section>
+                    {/* NEED INSTRUCTIONS AS WELL */}
                     <section className="features ineedspace">
                         <ul className="">
                             <li>Create cells (or activity logs) of your feelings and activities over the course of a day. </li>

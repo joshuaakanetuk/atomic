@@ -74,6 +74,13 @@ nav li {
   text-align: center;
 }
 
+nav li a, nav li a:visited, nav li a:active  {
+  color: #333;
+  text-decoration: none;
+}
+
+
+
 /* APP */
 
 .overlay {
@@ -239,7 +246,8 @@ textarea {
   justify-content: center;
   align-items: center;
   bottom: 20px;
-  border: 1px solid #333;
+  color: white;
+  background-color: #333;
   right: 20px;
   /* box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16); */
 }

@@ -26,11 +26,11 @@ class Update extends React.Component {
 
     const nextButton = (
       <div
-        onClick={() => {
+        onClick={(e) => {
             if(this.context.STATUS + 1 === 3 ) {
                this.context.updateState({ STATUS: 0 })
                 this.context.submitCell();
-                this.context.toggleOverlay();
+                this.context.toggleOverlay(e);
                 return;
             }
             this.context.updateState({ STATUS: ++this.context.STATUS });
