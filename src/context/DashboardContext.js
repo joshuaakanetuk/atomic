@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import CELLS from "../LIST";
 import { v4 as uuidv4 } from "uuid";
+import serve from "../services/api.js"
+import token from '../services/token'
 
 // Declare variables and functions here
 // setError: () => {},
@@ -10,7 +12,7 @@ export default DashboardContext;
 
 export class DashboardProvider extends Component {
   state = {
-    cells: CELLS,
+    cells: [],
     overlay: false,
     STATUS: 0,
     cell: {
@@ -24,6 +26,24 @@ export class DashboardProvider extends Component {
       comment: "",
     },
   };
+
+    // function to get all of the cells
+    getCells = () => {
+      serve
+        .getCells()
+        .then((data) => {
+          this.setState({
+            cells: data,
+          });
+        })
+        .catch((err) => {
+          token.clearAuthToken();
+          token.clearUser();
+          this.setState({
+            error: true,
+          });
+        });
+    };
 
   // Clean state for new cell
   cleanCell = () => {};
@@ -80,7 +100,7 @@ export class DashboardProvider extends Component {
 
   render() {
     // Put functions in like this:
-    // projects: this.state.projects
+    // cells: this.state.cells
     const value = {
       cells: this.state.cells,
       overlay: this.state.overlay,
@@ -91,6 +111,7 @@ export class DashboardProvider extends Component {
       submitCell: this.submitCell,
       cleanCell: this.cleanCell,
       prepCell: this.prepCell,
+      getCells: this.getCells
     };
 
     return (
