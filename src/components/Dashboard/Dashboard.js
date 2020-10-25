@@ -18,7 +18,6 @@ class Dashboard extends React.Component {
     return (
       <>
         <section className="container">
-          {/*  PLUS SIGN  */}
           <div
             onClick={(e) => {
               this.context.cleanCell();
@@ -28,7 +27,6 @@ class Dashboard extends React.Component {
           >
             +{" "}
           </div>
-          {/* CELLS / STATS SELECTOR */}
           <Switch>
             <Route
               exact

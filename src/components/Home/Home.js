@@ -10,8 +10,6 @@ class Home extends React.Component {
   render() {
     return (
       <section className="container">
-        {/* Navigation Bar */}
-
         <main id="home">
           <section className="frontpage ineedspace">
             <h1>
@@ -46,7 +44,6 @@ class Home extends React.Component {
               )}
             </ul>
           </section>
-          {/* NEED INSTRUCTIONS AS WELL */}
           {}
           <section className="features ineedspace">
             <ul className="">
