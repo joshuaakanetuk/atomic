@@ -67,7 +67,6 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log(this.state.loginStatus);
     return (
       <section className="container">
         <main id="login">
@@ -75,8 +74,8 @@ class Login extends React.Component {
             {this.state.loginStatus === "/login" ? (
               <h2>Login</h2>
             ) : (
-              <h2>Register</h2>
-            )}
+                <h2>Register</h2>
+              )}
             <span style={{ marginTop: "12px" }}>{this.state.statusMsg}</span>
             <span style={{ marginTop: "12px" }}>{this.state.error}</span>
             <label>Username:</label>
@@ -92,8 +91,8 @@ class Login extends React.Component {
                 <br />
               </>
             ) : (
-              ""
-            )}
+                ""
+              )}
             <input type="submit"></input>
             <br />
           </form>
