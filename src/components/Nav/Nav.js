@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import DashboardContext from "../../context/DashboardContext";
 import token from '../../services/token'
 
@@ -23,6 +23,7 @@ class Nav extends React.Component {
               <li>
                 <Link to="/dashboard"> Dashboard </Link>
               </li>
+              <li>
               <Link
                 to=""
                 onClick={() => {
@@ -34,6 +35,7 @@ class Nav extends React.Component {
               >
                 Logout
               </Link>
+              </li>
               <li>
                 <Link to="/dashboard/profile"> Profile </Link>
               </li>
@@ -58,4 +60,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
