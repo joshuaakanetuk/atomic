@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
-import Profile from "./Profile";
+import { BrowserRouter } from "react-router-dom";
+import Login from "./Login";
 
-test("renders Profile", () => {
+test("renders Home", () => {
   const div = document.createElement("div");
   render(
-      <Profile />,
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>,
     div
   );
   ReactDOM.unmountComponentAtNode(div);

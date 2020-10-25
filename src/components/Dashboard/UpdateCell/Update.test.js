@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
-import Profile from "./Profile";
+import Update from "./Update";
 
-test("renders Profile", () => {
+test("renders Update", () => {
   const div = document.createElement("div");
   render(
-      <Profile />,
+      <Update />,
     div
   );
   ReactDOM.unmountComponentAtNode(div);

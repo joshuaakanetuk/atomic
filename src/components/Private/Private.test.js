@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
-import Profile from "./Profile";
+import PrivateRoute from "./Private";
 
-test("renders Profile", () => {
+test("renders Private (Route)", () => {
   const div = document.createElement("div");
   render(
-      <Profile />,
+      <PrivateRoute />,
     div
   );
   ReactDOM.unmountComponentAtNode(div);
