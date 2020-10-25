@@ -12,7 +12,6 @@ class Update extends React.Component {
     };
   }
   render() {
-    // Validate choice, if empty error message!!!
     const prevButton = (
       <div
         onClick={() => {
