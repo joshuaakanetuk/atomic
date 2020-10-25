@@ -44,9 +44,10 @@ class Update extends React.Component {
     //
     const picker =
       this.context.cell.type === "feel"
-        ? FEELINGS.map((feel) => {
+        ? FEELINGS.map((feel, i) => {
             return (
               <li
+              key={i}
                 className={
                   this.context.cell.verb === feel
                     ? "pickerItem active"
@@ -60,9 +61,10 @@ class Update extends React.Component {
               </li>
             );
           })
-        : ACTIVITIES.map((done) => {
+        : ACTIVITIES.map((done, i) => {
             return (
               <li
+              key={i}
                 className={
                   this.context.cell.verb === done
                     ? "pickerItem active"
@@ -78,7 +80,7 @@ class Update extends React.Component {
           });
 
     const feeloract = (
-      <div class="activityContainer">
+      <div className="activityContainer">
         <div className="feeldo">
           <div
             onClick={() => {
@@ -105,14 +107,14 @@ class Update extends React.Component {
     );
 
     const pickActivity = (
-      <div class="activityContainer">
-        <div class="header">
-          <span class="pickerHeader">
+      <div className="activityContainer">
+        <div className="header">
+          <span className="pickerHeader">
             I{" "}
             {this.context.cell.type === "feel"
               ? "was feeling " + this.context.cell.verb + "."
               : this.context.cell.verb +
-                (this.context.cell.for ? " for " : "") +
+                (this.context.cell.forBool ? " for " : "") +
                 (this.context.cell.number !== null
                   ? " " + this.context.cell.number + " "
                   : "") +
@@ -122,8 +124,8 @@ class Update extends React.Component {
                 "."}
           </span>
         </div>
-        <div class="choices">
-          <ul class="picker">{picker}</ul>
+        <div className="choices">
+          <ul className="picker">{picker}</ul>
         </div>
         <div>
           {this.context.cell.type === "do" ? (
@@ -131,12 +133,12 @@ class Update extends React.Component {
               <label>For:</label>
               <input
                 onChange={() =>
-                  this.context.cell.for
+                  this.context.cell.forBool
                     ? this.context.updateState({
-                        cell: { ...this.context.cell, for: false },
+                        cell: { ...this.context.cell, forBool: false },
                       })
                     : this.context.updateState({
-                        cell: { ...this.context.cell, for: true },
+                        cell: { ...this.context.cell, forBool: true },
                       })
                 }
                 checked={this.context.cell.for}
@@ -174,7 +176,7 @@ class Update extends React.Component {
     );
 
     const comment = (
-      <div class="activityContainer">
+      <div className="activityContainer">
         <textarea
           onChange={(e) =>
             this.context.updateState({

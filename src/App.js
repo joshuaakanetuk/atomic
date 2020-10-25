@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { Route } from "react-router-dom";
 import 'remixicon/fonts/remixicon.css'
@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardContext from './context/DashboardContext';
 import Update from './components/Dashboard/UpdateCell/Update';
+import PrivateRoute from "./components/Private/Private";
 
 class App extends React.Component  {
   static contextType = DashboardContext;
@@ -22,7 +23,8 @@ class App extends React.Component  {
         <Nav/>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/register" component={Login} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
       </div>
     )
   };

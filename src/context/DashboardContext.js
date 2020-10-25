@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import CELLS from "../LIST";
-import { v4 as uuidv4 } from "uuid";
-import serve from "../services/api.js"
-import token from '../services/token'
+import serve from "../services/api.js";
+import token from "../services/token";
 
 // Declare variables and functions here
 // setError: () => {},
@@ -12,6 +10,7 @@ export default DashboardContext;
 
 export class DashboardProvider extends Component {
   state = {
+    user: {},
     cells: [],
     overlay: false,
     STATUS: 0,
@@ -19,7 +18,7 @@ export class DashboardProvider extends Component {
       type: "feel",
       id: "",
       verb: "",
-      for: false,
+      forBool: false,
       number: null,
       unit: null,
       date_created: "",
@@ -27,26 +26,61 @@ export class DashboardProvider extends Component {
     },
   };
 
-    // function to get all of the cells
-    getCells = () => {
-      serve
-        .getCells()
-        .then((data) => {
-          this.setState({
-            cells: data,
-          });
-        })
-        .catch((err) => {
-          token.clearAuthToken();
-          token.clearUser();
-          this.setState({
-            error: true,
-          });
+  // after mounting set user
+  componentDidMount() {
+    this.setUser();
+  }
+
+  // function to clear error status
+  clearError = () => {
+    this.setState({
+      error: false,
+    });
+  };
+
+   // function to set state for conditional rendering
+   setUser = () => {
+    let user = JSON.parse(token.getUser());
+
+    console.log(user)
+    if (user) {
+      this.setState({user
+      });
+    }
+  };
+  // function to get all of the cells
+  getCells = () => {
+    serve
+      .getCells()
+      .then((data) => {
+        this.setState({
+          cells: data,
         });
-    };
+      })
+      .catch((err) => {
+        token.clearAuthToken();
+        token.clearUser();
+        this.setState({
+          error: true,
+        });
+      });
+  };
 
   // Clean state for new cell
-  cleanCell = () => {};
+  cleanCell = () => {
+    this.setState({
+      cell: {
+        type: "feel",
+        id: "",
+        verb: "",
+        forBool: false,
+        number: null,
+        unit: null,
+        date_created: "",
+        comment: "",
+      },
+    });
+  };
 
   // Set current cell for update
   prepCell = (e, cell) => {
@@ -64,23 +98,43 @@ export class DashboardProvider extends Component {
   submitCell = () => {
     // need to find cell if updating
     if (this.state.cell.id.length > 1) {
+      serve
+        .updateCell(this.state.cell.id, this.state.cell)
+        .then((data) => {
+          let cells = [...this.state.cells];
+          let cellId = cells.filter(
+            (cell) => cell.id === this.state.cell.id
+          )[0];
+          let cellTemp = cells.indexOf(cellId);
+          cells[cellTemp] = this.state.cell;
+          this.setState({ cells });
+        })
+        .catch((err) => {
+          token.clearAuthToken();
+          token.clearUser();
+          this.setState({
+            error: true,
+          });
+        });
       //
-      let cells = [...this.state.cells];
-      let cellId = cells.filter((cell) => cell.id === this.state.cell.id)[0];
-      let cellTemp = cells.indexOf(cellId);
-      cells[cellTemp] = this.state.cell;
-      this.setState({ cells });
     } else {
-      this.setState({
-        cells: [
-          ...this.state.cells,
-          {
-            ...this.state.cell,
-            id: uuidv4(),
-            date_created: new Date().toISOString(),
-          },
-        ],
-      });
+      serve
+        .insertCell({
+          ...this.state.cell,
+        })
+        .then((data) => {
+          // console.log(data)
+          this.setState({
+            cells: [...this.state.cells, data],
+          });
+        })
+        .catch((err) => {
+          token.clearAuthToken();
+          token.clearUser();
+          this.setState({
+            error: true,
+          });
+        });
     }
   };
 
@@ -90,8 +144,13 @@ export class DashboardProvider extends Component {
   };
 
   toggleOverlay = (e) => {
-    console.log(e)
-    if(e!= undefined && e.target.className === 'overlay' || e.target.className === 'plus' || e.target.className === 'cell_group' || (e.target.className === 'nextbutton'  && this.state.STATUS + 1 === 3 )) {
+    console.log(e);
+    if (
+      (e != undefined && e.target.className === "overlay") ||
+      e.target.className === "plus" ||
+      e.target.className === "cell_group" ||
+      (e.target.className === "nextbutton" && this.state.STATUS + 1 === 3)
+    ) {
       this.setState({
         overlay: this.state.overlay ? false : true,
       });
@@ -102,6 +161,7 @@ export class DashboardProvider extends Component {
     // Put functions in like this:
     // cells: this.state.cells
     const value = {
+      user: this.state.user,
       cells: this.state.cells,
       overlay: this.state.overlay,
       STATUS: this.state.STATUS,
@@ -111,7 +171,9 @@ export class DashboardProvider extends Component {
       submitCell: this.submitCell,
       cleanCell: this.cleanCell,
       prepCell: this.prepCell,
-      getCells: this.getCells
+      getCells: this.getCells,
+      clearError: this.clearError,
+      setUser: this.setUser
     };
 
     return (

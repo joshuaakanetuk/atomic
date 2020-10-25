@@ -1,19 +1,33 @@
 import React from 'react'
+import DashboardContext from '../../../context/DashboardContext';
 
 class Profile extends React.Component{
+    static contextType = DashboardContext;
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            profile_image: '',
+            full_name: ''
+
+        }
+    }
+
+    componentDidMount () {
+        this.setState({
+            profile_image: this.context.user.profile_image,
+            full_name: this.context.user.full_name
+        })
     }
     render() {
+
         return(
             <>
             <main id="profile">
-            <div class="avatar"></div>
+            <div style={{backgroundImage: `url('${this.context.user.profile_image}')`}} className="avatar"></div>
                     <label>Name:</label>
-                    <input value="Joshua Akan-Etuk" type="text"></input><br/>
+                    <input defaultValue={this.context.user.full_name} value={this.context.user.full_name} type="text"></input><br/>
                     <label>Profile Image URL:</label>
-                    <input type="text"></input><br/>
+                    <input defaultValue={this.context.user.profile_image} type="text"></input><br/>
                     <input type="submit"></input><br/>
             </main>
 

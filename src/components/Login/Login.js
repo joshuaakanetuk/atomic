@@ -1,22 +1,99 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import auth from "../../services/auth";
+import token from "../../services/token";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      statusMsg: "",
+      error: "",
+      user_name: "",
+      password: "",
+      full_name: "",
+      loginStatus: this.props.match.path,
+    };
   }
+
+  // clear status messages
+  clearMessages = () => {
+    this.setState({
+      statusMsg: "",
+    });
+  };
+
+  // handler for submittion on page
+  handleSubmitJwtAuth = (ev) => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    const { user_name, password, full_name } = ev.target;
+
+    if (this.state.loginStatus === "/login") {
+      auth
+        .postLogin({
+          user_name: user_name.value,
+          password: password.value,
+        })
+        .then((res) => {
+          user_name.value = "";
+          password.value = "";
+          token.saveAuthToken(res.authToken);
+          token.saveUser(JSON.stringify(res.user));
+          this.props.history.push("/dashboard");
+        })
+        .catch((res) => {
+          this.setState({ error: res.error });
+        });
+    } else {
+      auth
+        .postUser({
+          user_name: user_name.value,
+          password: password.value,
+          full_name: full_name.value,
+        })
+        .then((res) => {
+          user_name.value = "";
+          password.value = "";
+          full_name.value = "";
+          this.setState({
+            statusMsg: "Registration complete. Feel free to login!",
+          });
+        })
+        .catch((res) => {
+          this.setState({ error: res.error });
+        });
+    }
+  };
+
   render() {
+    console.log(this.state.loginStatus);
     return (
       <section className="container">
         <main id="login">
-          <form>
-            <h2>Sign In</h2>
+          <form onSubmit={this.handleSubmitJwtAuth}>
+            {this.state.loginStatus === "/login" ? (
+              <h2>Login</h2>
+            ) : (
+              <h2>Register</h2>
+            )}
+            <span style={{ marginTop: "12px" }}>{this.state.statusMsg}</span>
+            <span style={{ marginTop: "12px" }}>{this.state.error}</span>
             <label>Username:</label>
-            <input type="text"></input>
+            <input name="user_name" type="text"></input>
             <br />
             <label>Password:</label>
-            <input type="text"></input>
+            <input name="password" type="password"></input>
             <br />
+            {this.state.loginStatus !== "/login" ? (
+              <>
+                <label>Full Name:</label>
+                <input name="full_name" type="text"></input>
+                <br />
+              </>
+            ) : (
+              ""
+            )}
             <input type="submit"></input>
             <br />
           </form>
@@ -26,4 +103,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -282,6 +282,13 @@ textarea {
 
 /* PROFILE  */
 
+#profile {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 #profile .avatar {
   background-image: url("https://ui-avatars.com/api/?background=0D8ABC&color=fff");
   width: 144px;
