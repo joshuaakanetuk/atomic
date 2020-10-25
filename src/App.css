@@ -195,21 +195,69 @@ textarea {
 /* HOME PAGE */
 
 #home {
+  height: 100vh;
 }
 
 #home h1,
 #home h3 {
   margin-top: 0;
   text-align: center;
+  width: 80%;
 }
 
 #home .frontpage {
-  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#home .frontpage ul {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  
+}
+
+#home .frontpage li   {
+  background-color: #333;
+  width: 200px;
+}
+
+#home .frontpage li a  {
+  background-color: #333;
+  /* width: 80%; */
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
 }
 
 #home .features li {
   margin-bottom: 20px;
+  height: 220px;
+  border: 1px solid black;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
+
+#home .features li i { 
+  font-size: 48px;
+}
+
+.twa {
+      background-size: none;
+}
+
+/* FOOTER  */
 
 #home .footer {
   background-color: #333;
@@ -220,8 +268,23 @@ textarea {
   display: flex;
 }
 
+#home a {
+  color: white;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
 #home .footer div {
   flex: 1 1 50%;
+}
+
+#home .footer div:nth-child(2) {
+  flex: 1 1 50%; 
+}
+
+i {
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 /* LOGIN/REGISTER */
@@ -300,5 +363,14 @@ textarea {
 
 /* TABLETS + DESKTOPS */
 
-@media all and (max-width: 600px) {
+@media all and (min-width: 650px) {
+  #home .features ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #home .features li {
+    flex: 1 1 30%;
+    margin: 5px;
+  }
 }
