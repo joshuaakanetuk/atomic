@@ -86,15 +86,15 @@ class Stats extends React.Component {
           <div>
             <h3>Favorite Day To Do Things</h3>
             <span>
-            {daysArray.map((item) => {
-              return <span>{item}</span>;
+            {daysArray.map((item, i) => {
+              return <span key={i}>{item}</span>;
             })}
             </span>
           </div>
           <div>
             <h3>Activities & Feelings Ranking</h3>
-            {output.map((item) => {
-              return <span>{item}</span>;
+            {output.map((item, i) => {
+              return <span key={i}>{item}</span>;
             })}
           </div>
         </section>

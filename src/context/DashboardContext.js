@@ -28,7 +28,11 @@ export class DashboardProvider extends Component {
 
   // after mounting set user
   componentDidMount() {
-    this.setUser();
+    serve.getUser(this.state.user.user_id).then((data) => {
+      this.setState({
+        user: {...this.state.user, full_name: data.full_name, profile_image: data.profile_image}
+      })
+    })
   }
 
   // function to clear error status
