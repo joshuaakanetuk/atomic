@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
 import DashboardContext from "../../context/DashboardContext";
 import List from "./List/List.js";
 import Profile from "./Profile/Profile";
@@ -12,12 +12,17 @@ class Dashboard extends React.Component {
     this.state = {};
   }
   componentDidMount() {
+    this.context.setUser()
     this.context.getCells();
   }
   render() {
     return (
       <>
         <section className="container">
+        <div className="toggle">
+        <NavLink exact to="/dashboard"> Dashboard </NavLink>
+        <NavLink to="/dashboard/stats"> Stats </NavLink>
+        </div>
           <div
             onClick={(e) => {
               this.context.cleanCell();
@@ -25,9 +30,10 @@ class Dashboard extends React.Component {
             }}
             className="plus"
           >
-            +{" "}
+            +
           </div>
           <Switch>
+            
             <Route
               exact
               path="/dashboard"

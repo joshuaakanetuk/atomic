@@ -67,13 +67,34 @@ class Home extends React.Component {
               </li>
             </ul>
           </section>
+          <section className="functions ineedspace">
+            <h2>How to use ATOMIC</h2>
+            <ul className="">
+            <li>
+              <i class="twa twa-person"></i>
+              <br/>
+                Create an account and sign in via register
+              </li>
+              <li>
+              <i class="twa twa-plus"></i>
+                  <br/>
+                Create cells by using the + in the bottom right corner.
+              </li>
+              <li>
+              <i class="twa twa-goal-net"></i>
+              <br/>
+                Enter the information needed for cell completion listed in overlay dialog!
+              </li>
+              
+            </ul>
+          </section>
           <section className="footer ineedspace">
             <div>
               <div>
                 <i className="ri-donut-chart-fill"></i>ATOMIC
               </div>
             </div>
-            <div>
+            <div className="outbound">
               <li>
                 <Link to="/">Home</Link>
               </li>

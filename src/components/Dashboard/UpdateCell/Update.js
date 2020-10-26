@@ -192,7 +192,7 @@ class Update extends React.Component {
 
     const COLLECTION = [feeloract, pickActivity, comment];
 
-    return <div className="contain">{COLLECTION[this.context.STATUS]}</div>;
+    return <>{COLLECTION[this.context.STATUS]}</>;
   }
 }
 

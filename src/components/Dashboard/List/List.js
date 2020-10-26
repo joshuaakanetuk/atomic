@@ -24,6 +24,7 @@ class List extends React.Component {
       <main className="list">
         <ul className="ineedspace">
           {reverseArr(this.props.cells).map((cell, i) => {
+            console.log(cell)
             return (
               <li
                 onClick={(e) => {
@@ -33,7 +34,7 @@ class List extends React.Component {
                 className="cell_group"
                 key={i}
               >
-                I {cell.type === 'feel' ? " felt " : ""} {cell.verb} {cell.forBool != false || cell.forBool != ""  ? "for" : ""} {cell.number} .
+                I {cell.type === 'feel' ? " felt " : ""} {cell.verb}{cell.forBool != false || cell.forBool != ""  ? " for " : ""}{cell.number !== 'false' ? " " + cell.number + " " : ""}{cell.unit !== 'false' ? " " + cell.unit : ""}.
                 <br />
                 {cell.comment}
                 <br />

@@ -1,3 +1,18 @@
-const ACTIVITIES = ["Celebrated","Watched", "Ate", "Drank", "Run", "Attended","Traveled","Drove", "Listened", "Found", "Read", "Played", "Supported"];
+const ACTIVITIES = [
+  "celebrated",
+  "watched",
+  "ate",
+  "drank",
+  "ran",
+  "attended",
+  "traveled",
+  "coded",
+  "drove",
+  "listened",
+  "found",
+  "read",
+  "played",
+  "supported",
+];
 
 module.exports = ACTIVITIES;

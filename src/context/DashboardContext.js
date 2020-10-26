@@ -66,6 +66,25 @@ export class DashboardProvider extends Component {
       });
   };
 
+  deleteCell = (id) => {
+    serve
+      .deleteCell(id);
+      // .then((data) => {
+      //   this.setState({
+      //     cells: data,
+      //   });
+      // })
+      // .catch((err) => {
+      //   token.clearAuthToken();
+      //   token.clearUser();
+      //   this.setState({
+      //     error: true,
+      //   });
+      // });
+
+
+  }
+
   // Clean state for new cell
   cleanCell = () => {
     this.setState({
@@ -173,7 +192,8 @@ export class DashboardProvider extends Component {
       prepCell: this.prepCell,
       getCells: this.getCells,
       clearError: this.clearError,
-      setUser: this.setUser
+      setUser: this.setUser,
+      deleteCell: this.deleteCell
     };
 
     return (
