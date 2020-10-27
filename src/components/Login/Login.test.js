@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./Login";
 
-test("renders Home", () => {
+test("renders Login", () => {
   const div = document.createElement("div");
   render(
     <BrowserRouter>
