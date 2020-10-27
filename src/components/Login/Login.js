@@ -96,7 +96,7 @@ class Login extends React.Component {
                 <div className="reqs">Password must be at least 8 character and contain 1 upper case, lower case, number and a special character.</div>
               </>
             ) : (
-              ""
+              <div className="reqs">Test Account:<br/>username: test <br/>password: Passwor01!</div>
             )}
             <input type="submit"></input>
             <br />
