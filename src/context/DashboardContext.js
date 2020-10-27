@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from "react";
 import serve from "../services/api.js";
 import token from "../services/token";
@@ -73,19 +74,22 @@ export class DashboardProvider extends Component {
 
   deleteCell = (id) => {
     serve
-      .deleteCell(id);
-      // .then((data) => {
-      //   this.setState({
-      //     cells: data,
-      //   });
-      // })
-      // .catch((err) => {
-      //   token.clearAuthToken();
-      //   token.clearUser();
-      //   this.setState({
-      //     error: true,
-      //   });
-      // });
+      .deleteCell(id)
+      .then((data) => {
+        if(!data.ok) {
+          alert("Error deleting cell.")
+          return;
+        }
+        this.setState({
+          cells: this.state.cells.filter((cell) => {
+            return cell.id !== id;
+          }),
+        });
+
+      })
+      .catch((err) => {
+        alert("Error deleting cell. Try refreshing and trying again.")
+      });
 
 
   }

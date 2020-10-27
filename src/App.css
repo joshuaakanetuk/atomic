@@ -116,8 +116,6 @@ nav li a:active {
   display: none;
 }
 
-
-
 .contain {
   display: flex;
   justify-content: center;
@@ -135,12 +133,12 @@ nav li a:active {
   text-align: center;
 }
 
-.modifiers{
-  text-align: left!important;
+.modifiers {
+  text-align: left !important;
 }
 
-.modifiers input{
-  text-align: left!important;
+.modifiers input {
+  text-align: left !important;
   width: 50%;
 }
 
@@ -192,7 +190,6 @@ nav li a:active {
 .picker:-webkit-scrollbar-thumb {
   background: #333;
 }
-
 
 .pickerItem {
   flex: 1 1 50%;
@@ -380,7 +377,6 @@ i {
   margin: 20px 0;
 }
 
-
 /* DASHBOARD */
 
 .plus {
@@ -425,7 +421,22 @@ i {
   border: 1px solid black;
   padding: 20px;
   margin-bottom: 20px;
+  align-items: center;
+  display: flex;
 }
+
+.cell_main {
+  flex: 11 1;
+}
+
+.cell_delete_button {
+  flex: 1 1;
+}
+
+.cell_delete_button i {
+  font-size: 25px;
+}
+
 
 .cell_hero {
   display: flex;
@@ -447,7 +458,6 @@ i {
   color: #212121;
   margin: 5px 0;
 }
-
 
 .cell_profileimage {
   width: 40px;

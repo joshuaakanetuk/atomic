@@ -33,26 +33,39 @@ class List extends React.Component {
                 className="cell_group"
                 key={i}
               >
-                <div className="cell_hero">
-                  <div
-                    style={{
-                      backgroundImage: `url('${this.context.user.profile_image}')`,
-                    }}
-                    className="cell_profileimage"
-                  ></div>
-                  <span className="cell_hero_name">
-                    {this.context.user.full_name}
-                  </span>
+                <div className="cell_main">
+                  <div className="cell_hero">
+                    <div
+                      style={{
+                        backgroundImage: `url('${this.context.user.profile_image}')`,
+                      }}
+                      className="cell_profileimage"
+                    ></div>
+                    <span className="cell_hero_name">
+                      {this.context.user.full_name}
+                    </span>
+                  </div>
+                  <div className="cell_content">
+                    I {cell.type === "feel" ? " felt " : ""} {cell.verb}
+                    {cell.forBool != false || cell.forBool != "" ? " for " : ""}
+                    {cell.number !== "false" ? " " + cell.number + " " : ""}
+                    {cell.unit !== "false" ? " " + cell.unit : ""}.
+                    <br />
+                  </div>
+                  <div className="cell_comment">{cell.comment}</div>
+                  <small title={format(new Date(cell.date_created), "PPpp")}>
+                    {format(new Date(cell.date_created), "PPpp")}
+                  </small>
                 </div>
-                <div className="cell_content">
-                  I {cell.type === "feel" ? " felt " : ""} {cell.verb}
-                  {cell.forBool != false || cell.forBool != "" ? " for " : ""}
-                  {cell.number !== "false" ? " " + cell.number + " " : ""}
-                  {cell.unit !== "false" ? " " + cell.unit : ""}.
-                  <br />
+                <div onClick={() => {
+                  // eslint-disable-next-line no-restricted-globals
+                  if(confirm("Do you want to delete this cell?")) {
+                    this.context.deleteCell(cell.id);
+                  }
+
+                }} className="cell_delete_button">
+                  <i className="ri-delete-bin-fill"></i>
                 </div>
-                <div className="cell_comment">{cell.comment}</div>
-                <small title={format(new Date(cell.date_created), "PPpp")}>{format(new Date(cell.date_created), "PPpp")}</small>
               </li>
             );
           })}

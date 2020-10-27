@@ -24,7 +24,7 @@ class Home extends React.Component {
                 <>
                   <li>
                     <Link to="/dashboard">
-                      <i class="ri-login-box-fill"></i>Dashboard
+                      <i className="ri-login-box-fill"></i>Dashboard
                     </Link>
                   </li>
                 </>
@@ -32,12 +32,12 @@ class Home extends React.Component {
                 <>
                   <li>
                     <Link to="/login">
-                      <i class="ri-login-box-fill"></i>Login
+                      <i className="ri-login-box-fill"></i>Login
                     </Link>
                   </li>
                   <li>
                     <Link to="/register">
-                      <i class="ri-group-fill"></i>Register
+                      <i className="ri-group-fill"></i>Register
                     </Link>
                   </li>
                 </>
@@ -48,19 +48,19 @@ class Home extends React.Component {
           <section className="features ineedspace">
             <ul className="">
               <li>
-              <i class="twa twa-grinning-face"></i>
+              <i className="twa twa-grinning-face"></i>
                   <br/>
                 Create cells (or activity logs) of your feelings and activities
                 over the course of a day.
               </li>
               <li>
-              <i class="twa twa-atom-symbol"></i>
+              <i className="twa twa-atom-symbol"></i>
               <br/>
                 Check a summary of all of your cells to see the total
                 accumulated total of your activities.
               </li>
               <li>
-              <i class="twa twa-person-running"></i>
+              <i className="twa twa-person-running"></i>
               <br/>
                 Keep track of the little things, but don't feel like you need to
                 commit everyday.
@@ -71,17 +71,17 @@ class Home extends React.Component {
             <h2>How to use ATOMIC</h2>
             <ul className="">
             <li>
-              <i class="twa twa-person"></i>
+              <i className="twa twa-person"></i>
               <br/>
                 Create an account via the register page and sign in.
               </li>
               <li>
-              <i class="twa twa-plus"></i>
+              <i className="twa twa-plus"></i>
                   <br/>
-                Create cells by using the + in the bottom right corner.
+                Create cells by using the + in the bottom right corner. Update later by clicking on the cell.
               </li>
               <li>
-              <i class="twa twa-goal-net"></i>
+              <i className="twa twa-goal-net"></i>
               <br/>
                 Enter the information needed for cell completion listed in overlay dialog!
               </li>
@@ -105,7 +105,7 @@ class Home extends React.Component {
                 <Link to="/register">Register</Link>
               </li>
               <li>
-                <a href="https://joshuaakanetuk.com">2020©️ Joshua Akan-Etuk</a>
+                <a href="https://joshuaakanetuk.com">2020© Joshua Akan-Etuk</a>
               </li>
             </div>
           </section>

@@ -69,10 +69,9 @@ const ApiService = {
         
       )
   },
-  deleteCell(id, cell) {
+  deleteCell(id) {
     return fetch(`${config.API_ENDPOINT}/cells/${id}`, {
       method: 'DELETE',
-      body: JSON.stringify(cell),
       headers: {
         'Content-Type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
@@ -81,7 +80,7 @@ const ApiService = {
       .then(res => 
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          :  res.json()
+          : res
         
       )
   },
