@@ -26,13 +26,7 @@ class List extends React.Component {
         <ul className="ineedspace">
           {reverseArr(this.props.cells).map((cell, i) => {
             return (
-              <li
-                onClick={(e) => {
-                  this.context.prepCell(e, cell);
-                }}
-                className="cell_group"
-                key={i}
-              >
+              <li className="cell_group" key={i}>
                 <div className="cell_main">
                   <div className="cell_hero">
                     <div
@@ -57,13 +51,23 @@ class List extends React.Component {
                     {format(new Date(cell.date_created), "PPpp")}
                   </small>
                 </div>
-                <div onClick={() => {
-                  // eslint-disable-next-line no-restricted-globals
-                  if(confirm("Do you want to delete this cell?")) {
-                    this.context.deleteCell(cell.id);
-                  }
-
-                }} className="cell_delete_button">
+                <div
+                  onClick={(e) => {
+                    this.context.prepCell(e, cell);
+                  }}
+                  className="cell_edit_button"
+                >
+                  <i class="ri-edit-fill"></i>
+                </div>
+                <div
+                  onClick={() => {
+                    // eslint-disable-next-line no-restricted-globals
+                    if (confirm("Do you want to delete this cell?")) {
+                      this.context.deleteCell(cell.id);
+                    }
+                  }}
+                  className="cell_delete_button"
+                >
                   <i className="ri-delete-bin-fill"></i>
                 </div>
               </li>

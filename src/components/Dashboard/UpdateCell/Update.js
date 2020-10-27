@@ -91,6 +91,7 @@ class Update extends React.Component {
 
     const feeloract = (
       <div className="activityContainer">
+        <div>{this.context.cell.id ? "UPDATING CELL" : "ADD CELL"}</div>
         <div className="feeldo">
           <div
             onClick={() => {
@@ -118,6 +119,7 @@ class Update extends React.Component {
 
     const pickActivity = (
       <div className="activityContainer">
+        <div>{this.context.cell.id ? "UPDATING CELL" : "ADD CELL"}</div>
         <div className="header">
           <span className="pickerHeader">
             I{" "}
@@ -189,6 +191,7 @@ class Update extends React.Component {
 
     const comment = (
       <div className="activityContainer">
+        <div>{this.context.cell.id ? "UPDATING CELL" : "ADD CELL"}</div>
         <textarea
           onChange={(e) =>
             this.context.updateState({
@@ -205,7 +208,7 @@ class Update extends React.Component {
 
     const COLLECTION = [feeloract, pickActivity, comment];
 
-    return <>{COLLECTION[this.context.STATUS]}</>;
+        return <>{COLLECTION[this.context.STATUS]}</>;
   }
 }
 

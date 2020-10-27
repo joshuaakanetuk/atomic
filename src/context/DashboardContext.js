@@ -174,7 +174,7 @@ export class DashboardProvider extends Component {
     if (
       (e != undefined && e.target.className === "overlay") ||
       e.target.className === "plus" ||
-      e.target.className === "cell_group" ||
+      e.target.className === "ri-edit-fill" ||
       (e.target.className === "nextbutton" && this.state.STATUS + 1 === 3)
     ) {
       this.setState({
