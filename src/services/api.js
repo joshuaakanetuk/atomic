@@ -26,8 +26,8 @@ const ApiService = {
           : res.json()
       )
   },
-  getUser(id) {
-    return fetch(`${config.API_ENDPOINT}/users/${id}`, {
+  getUser() {
+    return fetch(`${config.API_ENDPOINT}/users`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
