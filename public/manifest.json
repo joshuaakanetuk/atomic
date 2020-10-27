@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Atomic",
+  "name": "Atomic — Keeping a log for everything.",
   "icons": [
     {
       "src": "favicon.ico",
