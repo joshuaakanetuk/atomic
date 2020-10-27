@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardContext from "../../../context/DashboardContext";
 import isSameDay from "date-fns/isSameDay";
-import { formatDistance, isSameYear } from "date-fns";
+import { isSameYear } from "date-fns";
 
 class Stats extends React.Component {
   static contextType = DashboardContext;
@@ -12,26 +12,33 @@ class Stats extends React.Component {
   render() {
     var counts = {};
     var days = {}
+    var hours = {}
 
     var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
     for (var i = 0; i < this.context.cells.length; i++) {
       var num = this.context.cells[i].verb;
       var day = new Date(this.context.cells[i].date_created).getDay();
+      var hour = new Date(this.context.cells[i].date_created).getHours();
       counts[num] = counts[num] ? counts[num] + 1 : 1;
       days[day] = days[day] ? days[day] + 1 : 1;
-    }
+      hours[hour] = days[hour] ? days[hour] + 1 : 1;
 
-    console.log(this.context.user)
+    }
 
     var output = [];
     var daysArray = [];
+    var hoursArray = [];
     for (var property in counts) {
       output.push(property + ": " + counts[property] + " ");
     }
 
-    for (var property in days) {
-      daysArray.push(DAYS[property] + ": " + days[property] + " ");
+    for (var prope in days) {
+      daysArray.push(DAYS[prope] + ": " + days[prope] + " ");
+    }
+
+    for (var value in hours) {
+      hoursArray.push(value + ":00");
     }
 
     return (
@@ -46,10 +53,6 @@ class Stats extends React.Component {
             <span>
               {
                 this.context.cells.filter((cell) => {
-                  console.log(
-                    isSameDay(new Date(cell.date_created), new Date()),
-                    cell
-                  );
                   return isSameDay(new Date(cell.date_created), new Date());
                 }).length
               }
@@ -60,10 +63,6 @@ class Stats extends React.Component {
             <span>
               {
                 this.context.cells.filter((cell) => {
-                  console.log(
-                    isSameYear(new Date(cell.date_created), new Date()),
-                    cell
-                  );
                   return isSameYear(new Date(cell.date_created), new Date());
                 }).length
               }
@@ -74,10 +73,6 @@ class Stats extends React.Component {
             <span>
               {
                 this.context.cells.filter((cell) => {
-                  console.log(
-                    isSameYear(new Date(cell.date_created), new Date()),
-                    cell
-                  );
                   return isSameYear(new Date(cell.date_created), new Date());
                 }).length
               }
@@ -86,9 +81,13 @@ class Stats extends React.Component {
           <div>
             <h3>Favorite Day To Do Things</h3>
             <span>
-            {daysArray.map((item, i) => {
-              return <span key={i}>{item}</span>;
-            })}
+            {daysArray[0]}
+            </span>
+          </div>
+          <div>
+            <h3>Favorite Hour To Do Things</h3>
+            <span>
+            {hoursArray[0]}
             </span>
           </div>
           <div>

@@ -41,7 +41,7 @@ small {
 }
 
 input {
-  font-size: 16px!important;
+  font-size: 16px !important;
   font-family: Roboto Mono, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
@@ -50,7 +50,7 @@ input {
 /* GLOBAL CLASSES */
 
 .container {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,9 @@ nav li {
   text-align: center;
 }
 
-nav li a, nav li a:visited, nav li a:active  {
+nav li a,
+nav li a:visited,
+nav li a:active {
   color: #333;
   text-decoration: none;
 }
@@ -93,7 +95,6 @@ nav li a, nav li a:visited, nav li a:active  {
   border: 1px solid black;
   padding: 5px 7px;
 }
-
 
 /* APP */
 
@@ -115,6 +116,8 @@ nav li a, nav li a:visited, nav li a:active  {
   display: none;
 }
 
+
+
 .contain {
   display: flex;
   justify-content: center;
@@ -130,6 +133,15 @@ nav li a, nav li a:visited, nav li a:active  {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.modifiers{
+  text-align: left!important;
+}
+
+.modifiers input{
+  text-align: left!important;
+  width: 50%;
 }
 
 #feelings,
@@ -148,7 +160,7 @@ nav li a, nav li a:visited, nav li a:active  {
 }
 
 .active {
-  color: white!important;
+  color: white !important;
   border: 1px solid black;
   background-color: black;
 }
@@ -181,8 +193,6 @@ nav li a, nav li a:visited, nav li a:active  {
   background: #333;
 }
 
-.pickerHeader {
-}
 
 .pickerItem {
   flex: 1 1 50%;
@@ -212,7 +222,7 @@ textarea {
 .toggle {
   display: flex;
   text-align: center;
-  width:100%;
+  width: 100%;
 }
 
 .toggle a {
@@ -235,7 +245,6 @@ textarea {
   width: 100%;
 }
 
-
 /* HOME PAGE */
 
 #home {
@@ -250,7 +259,6 @@ textarea {
 }
 
 #home .frontpage {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -261,15 +269,14 @@ textarea {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  
 }
 
-#home .frontpage li   {
+#home .frontpage li {
   background-color: #333;
   width: 200px;
 }
 
-#home .frontpage li a  {
+#home .frontpage li a {
   background-color: #333;
   /* width: 80%; */
   height: 60px;
@@ -293,17 +300,24 @@ textarea {
   text-align: center;
 }
 
-#home .functions li {
-  margin-bottom: 10px;
-
+#home .functions {
+  padding-top: 0px;
 }
 
-#home .features li i { 
+#home .functions {
+  text-align: center;
+}
+
+#home .functions li {
+  margin-bottom: 10px;
+}
+
+#home .features li i {
   font-size: 48px;
 }
 
 .twa {
-      background-size: auto;
+  background-size: auto;
 }
 
 /* FOOTER  */
@@ -328,7 +342,7 @@ textarea {
 }
 
 #home .footer div:nth-child(2) {
-  flex: 1 1 50%; 
+  flex: 1 1 50%;
 }
 
 #home .footer .outbound {
@@ -345,14 +359,27 @@ i {
 /* LOGIN/REGISTER */
 
 #login {
-  height: calc(100% - 395px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#id {
+#login h2 {
+  margin-bottom: 0;
 }
+
+#login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login .reqs {
+  width: 50%;
+  margin: 20px 0;
+}
+
 
 /* DASHBOARD */
 
@@ -378,7 +405,7 @@ i {
   padding: 20px;
 }
 
-.statsGrid  div {
+.statsGrid div {
   display: flex;
   /* height: 20px; */
   padding: 5px;
@@ -389,6 +416,10 @@ i {
   margin-bottom: 20px;
 }
 
+.statsGrid div:nth-child(even) {
+  border-left: 1px solid black;
+}
+
 /* CELLS */
 .cell_group {
   border: 1px solid black;
@@ -396,10 +427,32 @@ i {
   margin-bottom: 20px;
 }
 
+.cell_hero {
+  display: flex;
+  align-items: center;
+}
+
+.cell_hero_name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.cell_content {
+  margin-top: 10px;
+}
+
+.cell_comment {
+  font-size: 12px;
+  color: #212121;
+  margin: 5px 0;
+}
+
+
 .cell_profileimage {
-  background-image: url("https://ui-avatars.com/api/?background=0D8ABC&color=fff");
-  width: 16px;
-  height: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background-size: cover;
 }
 
@@ -411,6 +464,7 @@ i {
   justify-items: center;
   align-items: center;
   padding: 20px;
+  margin-top: 20px;
 }
 
 #profile .avatar {
@@ -425,13 +479,11 @@ i {
 /* TABLETS + DESKTOPS */
 
 @media all and (min-width: 650px) {
-
   .toggle {
     display: flex;
     text-align: center;
     width: 80%;
   }
-
 
   #home .features ul {
     display: flex;

@@ -10,7 +10,10 @@ export default DashboardContext;
 
 export class DashboardProvider extends Component {
   state = {
-    user: {},
+    user: {
+      profile_image: '',
+      full_name: ''
+    },
     cells: [],
     overlay: false,
     STATUS: 0,
@@ -45,8 +48,6 @@ export class DashboardProvider extends Component {
    // function to set state for conditional rendering
    setUser = () => {
     let user = JSON.parse(token.getUser());
-
-    console.log(user)
     if (user) {
       this.setState({user
       });
@@ -146,7 +147,6 @@ export class DashboardProvider extends Component {
           ...this.state.cell,
         })
         .then((data) => {
-          // console.log(data)
           this.setState({
             cells: [...this.state.cells, data],
           });
@@ -167,7 +167,6 @@ export class DashboardProvider extends Component {
   };
 
   toggleOverlay = (e) => {
-    console.log(e);
     if (
       (e != undefined && e.target.className === "overlay") ||
       e.target.className === "plus" ||

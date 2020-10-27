@@ -1,6 +1,7 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import DashboardContext from "../../../context/DashboardContext";
-import {format} from 'date-fns'
+import { format } from "date-fns";
 
 class List extends React.Component {
   static defaultProps = {
@@ -24,22 +25,34 @@ class List extends React.Component {
       <main className="list">
         <ul className="ineedspace">
           {reverseArr(this.props.cells).map((cell, i) => {
-            console.log(cell)
             return (
               <li
                 onClick={(e) => {
-                  console.log("clicked")
                   this.context.prepCell(e, cell);
                 }}
                 className="cell_group"
                 key={i}
               >
-                I {cell.type === 'feel' ? " felt " : ""} {cell.verb}{cell.forBool != false || cell.forBool != ""  ? " for " : ""}{cell.number !== 'false' ? " " + cell.number + " " : ""}{cell.unit !== 'false' ? " " + cell.unit : ""}.
-                <br />
-                {cell.comment}
-                <br />
-                <div style={{backgroundImage: `url('${this.context.user.profile_image}')`}} className="cell_profileimage"></div>
-                <small>{format(new Date(cell.date_created), "PPpp")}</small>
+                <div className="cell_hero">
+                  <div
+                    style={{
+                      backgroundImage: `url('${this.context.user.profile_image}')`,
+                    }}
+                    className="cell_profileimage"
+                  ></div>
+                  <span className="cell_hero_name">
+                    {this.context.user.full_name}
+                  </span>
+                </div>
+                <div className="cell_content">
+                  I {cell.type === "feel" ? " felt " : ""} {cell.verb}
+                  {cell.forBool != false || cell.forBool != "" ? " for " : ""}
+                  {cell.number !== "false" ? " " + cell.number + " " : ""}
+                  {cell.unit !== "false" ? " " + cell.unit : ""}.
+                  <br />
+                </div>
+                <div className="cell_comment">{cell.comment}</div>
+                <small title={format(new Date(cell.date_created), "PPpp")}>{format(new Date(cell.date_created), "PPpp")}</small>
               </li>
             );
           })}

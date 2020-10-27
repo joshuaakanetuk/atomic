@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import token from "../../services/token";
 
 class Home extends React.Component {
@@ -73,7 +73,7 @@ class Home extends React.Component {
             <li>
               <i class="twa twa-person"></i>
               <br/>
-                Create an account and sign in via register
+                Create an account via the register page and sign in.
               </li>
               <li>
               <i class="twa twa-plus"></i>

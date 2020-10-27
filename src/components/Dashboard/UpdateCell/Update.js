@@ -12,6 +12,11 @@ class Update extends React.Component {
     };
   }
   render() {
+
+    let LIST_OF_FEELINGS = FEELINGS.map((feeeling) => {
+      return (emoji.search(feeeling)[0]) ? emoji.search(feeeling)[0].emoji + " " + feeeling : feeeling;
+    })
+
     const prevButton = (
       <div
         onClick={() => {
@@ -23,9 +28,15 @@ class Update extends React.Component {
       </div>
     );
 
+
     const nextButton = (
       <div
         onClick={(e) => {
+            if(this.context.STATUS === 1 && this.context.cell.verb.length === 0) {
+              alert('Select an option from the picker!')
+              return;
+            }
+
             if(this.context.STATUS + 1 === 3 ) {
                this.context.updateState({ STATUS: 0 })
                 this.context.submitCell();
@@ -43,7 +54,7 @@ class Update extends React.Component {
     //
     const picker =
       this.context.cell.type === "feel"
-        ? FEELINGS.map((feel, i) => {
+        ? LIST_OF_FEELINGS.map((feel, i) => {
             return (
               <li
               key={i}
@@ -56,7 +67,7 @@ class Update extends React.Component {
                   this.context.updateState({ cell: { ...this.context.cell, verb: feel } });
                 }}
               >
-                {emoji.random().emoji + " " + feel}
+                {feel}
               </li>
             );
           })
@@ -73,7 +84,7 @@ class Update extends React.Component {
                   this.context.updateState({ cell: { ...this.context.cell, verb: done } });
                 }}
               >
-                {emoji.random().emoji + " " + done.toLowerCase()}
+                {done.toLowerCase()}
               </li>
             );
           });
@@ -126,10 +137,9 @@ class Update extends React.Component {
         <div className="choices">
           <ul className="picker">{picker}</ul>
         </div>
-        <div>
+        <div className="modifiers">
           {this.context.cell.type === "do" ? (
             <>
-              <label>For:</label>
               <input
                 onChange={() =>
                   this.context.cell.forBool
@@ -142,8 +152,8 @@ class Update extends React.Component {
                 }
                 checked={this.context.cell.for}
                 type="checkbox"
-              />
-              <input type="checkbox" />
+              /><label> Done for</label>
+              <br/>
               <input
                 onChange={(e) =>
                   this.context.updateState({
@@ -153,6 +163,8 @@ class Update extends React.Component {
                 value={this.context.cell.number}
                 type="number"
               />
+              <label> Number</label>
+              <br/>
               <input
                 onChange={(e) =>
                   this.context.updateState({
@@ -161,8 +173,9 @@ class Update extends React.Component {
                 }
                 value={this.context.cell.unit}
                 type="text"
-                placeholder="Enter unit of measurement..."
+                placeholder=""
               />
+              <label> Units</label>
             </>
           ) : (
             ""

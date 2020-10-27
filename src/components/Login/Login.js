@@ -74,10 +74,14 @@ class Login extends React.Component {
             {this.state.loginStatus === "/login" ? (
               <h2>Login</h2>
             ) : (
-                <h2>Register</h2>
-              )}
-            <span style={{ marginTop: "12px" }}>{this.state.statusMsg}</span>
-            <span style={{ marginTop: "12px" }}>{this.state.error}</span>
+              <h2>Register</h2>
+            )}
+            <div style={{ margin: "6px 0", color: "red" }}>
+              {this.state.statusMsg}
+            </div>
+            <div style={{ margin: "6px 0", color: "red" }}>
+              {this.state.error}
+            </div>
             <label>Username:</label>
             <input name="user_name" type="text"></input>
             <br />
@@ -89,10 +93,11 @@ class Login extends React.Component {
                 <label>Full Name:</label>
                 <input name="full_name" type="text"></input>
                 <br />
+                <div className="reqs">Password must be at least 8 character and contain 1 upper case, lower case, number and a special character.</div>
               </>
             ) : (
-                ""
-              )}
+              ""
+            )}
             <input type="submit"></input>
             <br />
           </form>

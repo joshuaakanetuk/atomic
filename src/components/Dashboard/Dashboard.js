@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import DashboardContext from "../../context/DashboardContext";
 import List from "./List/List.js";
 import Profile from "./Profile/Profile";
@@ -25,6 +25,7 @@ class Dashboard extends React.Component {
         </div>
           <div
             onClick={(e) => {
+              this.context.updateState({STATUS: 0})
               this.context.cleanCell();
               this.context.toggleOverlay(e);
             }}
