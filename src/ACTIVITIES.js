@@ -13,6 +13,7 @@ const ACTIVITIES = [
   "read",
   "played",
   "supported",
+  "slept"
 ];
 
 module.exports = ACTIVITIES;
